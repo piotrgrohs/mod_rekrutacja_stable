@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1.0" client="site" method="upgrade">
+    <name>Rekrutacja</name>
+    <author>Piotr Grohs</author>
+    <version>1.0.0</version>
+    <description>Moduł do zarządzania rekrutacją.</description>
+    <files>
+        <filename>mod_rekrutacja.xml</filename>
+        <filename module="mod_rekrutacja">mod_rekrutacja.php</filename>
+        <filename>index.html</filename>
+        <filename>helper.php</filename>
+        <filename>mailer.php</filename>
+        <filename>tmpl/index.html</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/nav.php</filename>
+        <filename>tmpl/html/error.php</filename>
+        <filename>tmpl/html/login.php</filename>
+        <filename>tmpl/html/logout.php</filename>
+        <filename>tmpl/html/registration.php</filename>
+        <filename>tmpl/html/token.php</filename>
+        <filename>tmpl/html/template/admin.php</filename>
+        <filename>tmpl/html/template/events.php</filename>
+        <filename>tmpl/html/template/login.php</filename>
+        <filename>tmpl/html/template/registration.php</filename>
+        <filename>tmpl/html/template/welcome.php</filename>
+        <filename>sql/mysql/install.mysql.utf8.sql</filename>
+        <filename>sql/mysql/uninstall.mysql.utf8.sql</filename>
+        <filename>PHPMailer/Exception.php</filename>
+        <filename>PHPMailer/PHPMailer.php</filename>
+        <filename>PHPMailer/SMTP.php</filename>
+		
+    </files>
+    <folder>sql</folder>
+
+
+    <install>
+    <sql>
+    <file driver="mysql" charset="utf8">sql/mysql/install.mysql.utf8.sql</file>
+    </sql>
+    </install>
+
+    <uninstall>
+    <sql>
+    <file driver="mysql" charset="utf8">sql/mysql/uninstall.mysql.utf8.sql</file>
+    </sql>
+    </uninstall>
+
+   
+    <config>
+    <fields name="params">
+    <fieldset name="basic">
+        <field 
+               name="users"
+               type="sql"
+               default="1"
+               key_field="id"
+               value_field="login"
+               label="Użytkownicy"
+               query="SELECT id , login FROM #__rekrutacja" />
+               <field 
+               name="article"
+               type="sql"
+               default="1"
+               key_field="count"
+               value_field="count"
+               label="Ilość"
+               query="SELECT count(id) AS count FROM #__rekrutacja" />
+    </fieldset>
+</fields>
+    </config>
+
+
+</extension>
